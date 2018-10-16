@@ -1,0 +1,46 @@
+﻿@model QLXS.Models.DaiLy
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông Tin</h2>
+
+<div>
+    <h4>Đại Lý</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDaiLy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDaiLy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+        
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDaiLy }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

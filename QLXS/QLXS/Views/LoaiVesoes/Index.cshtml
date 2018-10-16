@@ -1,0 +1,44 @@
+﻿@model IEnumerable<QLXS.Models.LoaiVeso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh Sách Vé Số</h2>
+
+<p>
+    @Html.ActionLink("Thêm", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model=>model.MaLoaiVeSo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaVe)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem=>item.MaLoaiVeSo)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaVe)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaLoaiVeSo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaLoaiVeSo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaLoaiVeSo })
+        </td>
+    </tr>
+}
+
+</table>

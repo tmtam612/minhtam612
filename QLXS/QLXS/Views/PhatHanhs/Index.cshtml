@@ -1,0 +1,75 @@
+﻿@model IEnumerable<QLXS.Models.PhatHanh>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh Sách Phát Hành</h2>
+
+<p>
+    @Html.ActionLink("Thêm Phát Hành", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Đại Lý
+        </th>
+        <th>
+            Tỉnh
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayNhan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoanhThuDPH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoaHong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TienThanhToan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaiLy.TenDaiLy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiVeso.Tinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayNhan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoanhThuDPH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoaHong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TienThanhToan)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ID,madaily=item.MaDaiLy,maveso=item.MaLoaiVeSo }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.ID,madaily=item.MaDaiLy,maveso=item.MaLoaiVeSo  }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID, madaily = item.MaDaiLy, maveso = item.MaLoaiVeSo })
+        </td>
+    </tr>
+}
+
+</table>

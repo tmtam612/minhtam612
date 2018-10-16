@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLVESOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DaiLy">
+    <Key>
+      <PropertyRef Name="MaDaiLy" />
+    </Key>
+    <Property Name="MaDaiLy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDaiLy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Flag" Type="Boolean" />
+    <NavigationProperty Name="PhatHanhs" Relationship="Self.FK__PhatHanh__MaDaiL__182C9B23" FromRole="DaiLy" ToRole="PhatHanh" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.FK__PhieuThu__Flag__21B6055D" FromRole="DaiLy" ToRole="PhieuThu" />
+    <NavigationProperty Name="SoLuongDKs" Relationship="Self.FK__SoLuongDK__MaDai__15502E78" FromRole="DaiLy" ToRole="SoLuongDK" />
+  </EntityType>
+  <EntityType Name="Giai">
+    <Key>
+      <PropertyRef Name="MaGiai" />
+    </Key>
+    <Property Name="MaGiai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenGiai" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SoTienNhan" Type="Decimal" Precision="19" Scale="3" />
+    <Property Name="Flag" Type="Boolean" />
+    <NavigationProperty Name="KetQuaSoXoes" Relationship="Self.FK__KetQuaSoX__MaGia__1ED998B2" FromRole="Giai" ToRole="KetQuaSoXo" />
+  </EntityType>
+  <EntityType Name="KetQuaSoXo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="MaLoaiVeSo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MaGiai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NgaySo" Type="DateTime" Precision="0" />
+    <Property Name="SoTrung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Flag" Type="Boolean" />
+    <NavigationProperty Name="Giai" Relationship="Self.FK__KetQuaSoX__MaGia__1ED998B2" FromRole="KetQuaSoXo" ToRole="Giai" />
+    <NavigationProperty Name="LoaiVeso" Relationship="Self.FK__KetQuaSoX__MaLoa__1DE57479" FromRole="KetQuaSoXo" ToRole="LoaiVeso" />
+  </EntityType>
+  <EntityType Name="LoaiVeso">
+    <Key>
+      <PropertyRef Name="MaLoaiVeSo" />
+    </Key>
+    <Property Name="MaLoaiVeSo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tinh" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="GiaVe" Type="Decimal" Precision="19" Scale="3" />
+    <Property Name="Flag" Type="Boolean" />
+    <NavigationProperty Name="KetQuaSoXoes" Relationship="Self.FK__KetQuaSoX__MaLoa__1DE57479" FromRole="LoaiVeso" ToRole="KetQuaSoXo" />
+    <NavigationProperty Name="PhatHanhs" Relationship="Self.FK__PhatHanh__MaLoai__1920BF5C" FromRole="LoaiVeso" ToRole="PhatHanh" />
+  </EntityType>
+  <EntityType Name="PhatHanh">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="MaDaiLy" />
+      <PropertyRef Name="MaLoaiVeSo" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDaiLy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaLoaiVeSo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="NgayNhan" Type="DateTime" Precision="0" />
+    <Property Name="SLBan" Type="Int32" />
+    <Property Name="DoanhThuDPH" Type="Decimal" Precision="19" Scale="3" />
+    <Property Name="HoaHong" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="TienThanhToan" Type="Decimal" Precision="19" Scale="3" />
+    <Property Name="Flag" Type="Boolean" />
+    <NavigationProperty Name="DaiLy" Relationship="Self.FK__PhatHanh__MaDaiL__182C9B23" FromRole="PhatHanh" ToRole="DaiLy" />
+    <NavigationProperty Name="LoaiVeso" Relationship="Self.FK__PhatHanh__MaLoai__1920BF5C" FromRole="PhatHanh" ToRole="LoaiVeso" />
+  </EntityType>
+  <EntityType Name="PhieuChi">
+    <Key>
+      <PropertyRef Name="MaPhieuChi" />
+    </Key>
+    <Property Name="MaPhieuChi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ngay" Type="DateTime" Precision="0" />
+    <Property Name="NoiDung" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="3" />
+  </EntityType>
+  <EntityType Name="PhieuThu">
+    <Key>
+      <PropertyRef Name="MaPhieuThu" />
+    </Key>
+    <Property Name="MaPhieuThu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaDaiLy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NgayNop" Type="DateTime" Precision="0" />
+    <Property Name="SoTienNop" Type="Decimal" Precision="19" Scale="3" />
+    <Property Name="Flag" Type="Boolean" />
+    <NavigationProperty Name="DaiLy" Relationship="Self.FK__PhieuThu__Flag__21B6055D" FromRole="PhieuThu" ToRole="DaiLy" />
+  </EntityType>
+  <EntityType Name="SoLuongDK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaDaiLy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NgayDK" Type="DateTime" Precision="0" />
+    <Property Name="SoLuongDK1" Type="Int32" />
+    <Property Name="Flag" Type="Boolean" />
+    <NavigationProperty Name="DaiLy" Relationship="Self.FK__SoLuongDK__MaDai__15502E78" FromRole="SoLuongDK" ToRole="DaiLy" />
+  </EntityType>
+  <Association Name="FK__PhatHanh__MaDaiL__182C9B23">
+    <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+    <End Role="PhatHanh" Type="Self.PhatHanh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaiLy">
+        <PropertyRef Name="MaDaiLy" />
+      </Principal>
+      <Dependent Role="PhatHanh">
+        <PropertyRef Name="MaDaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuThu__Flag__21B6055D">
+    <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="0..1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaiLy">
+        <PropertyRef Name="MaDaiLy" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="MaDaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SoLuongDK__MaDai__15502E78">
+    <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="0..1" />
+    <End Role="SoLuongDK" Type="Self.SoLuongDK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaiLy">
+        <PropertyRef Name="MaDaiLy" />
+      </Principal>
+      <Dependent Role="SoLuongDK">
+        <PropertyRef Name="MaDaiLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KetQuaSoX__MaGia__1ED998B2">
+    <End Role="Giai" Type="Self.Giai" Multiplicity="0..1" />
+    <End Role="KetQuaSoXo" Type="Self.KetQuaSoXo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Giai">
+        <PropertyRef Name="MaGiai" />
+      </Principal>
+      <Dependent Role="KetQuaSoXo">
+        <PropertyRef Name="MaGiai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KetQuaSoX__MaLoa__1DE57479">
+    <End Role="LoaiVeso" Type="Self.LoaiVeso" Multiplicity="0..1" />
+    <End Role="KetQuaSoXo" Type="Self.KetQuaSoXo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiVeso">
+        <PropertyRef Name="MaLoaiVeSo" />
+      </Principal>
+      <Dependent Role="KetQuaSoXo">
+        <PropertyRef Name="MaLoaiVeSo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhatHanh__MaLoai__1920BF5C">
+    <End Role="LoaiVeso" Type="Self.LoaiVeso" Multiplicity="1" />
+    <End Role="PhatHanh" Type="Self.PhatHanh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiVeso">
+        <PropertyRef Name="MaLoaiVeSo" />
+      </Principal>
+      <Dependent Role="PhatHanh">
+        <PropertyRef Name="MaLoaiVeSo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLVESOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DaiLies" EntityType="Self.DaiLy" />
+    <EntitySet Name="Giais" EntityType="Self.Giai" />
+    <EntitySet Name="KetQuaSoXoes" EntityType="Self.KetQuaSoXo" />
+    <EntitySet Name="LoaiVesoes" EntityType="Self.LoaiVeso" />
+    <EntitySet Name="PhatHanhs" EntityType="Self.PhatHanh" />
+    <EntitySet Name="PhieuChis" EntityType="Self.PhieuChi" />
+    <EntitySet Name="PhieuThus" EntityType="Self.PhieuThu" />
+    <EntitySet Name="SoLuongDKs" EntityType="Self.SoLuongDK" />
+    <AssociationSet Name="FK__PhatHanh__MaDaiL__182C9B23" Association="Self.FK__PhatHanh__MaDaiL__182C9B23">
+      <End Role="DaiLy" EntitySet="DaiLies" />
+      <End Role="PhatHanh" EntitySet="PhatHanhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuThu__Flag__21B6055D" Association="Self.FK__PhieuThu__Flag__21B6055D">
+      <End Role="DaiLy" EntitySet="DaiLies" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SoLuongDK__MaDai__15502E78" Association="Self.FK__SoLuongDK__MaDai__15502E78">
+      <End Role="DaiLy" EntitySet="DaiLies" />
+      <End Role="SoLuongDK" EntitySet="SoLuongDKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KetQuaSoX__MaGia__1ED998B2" Association="Self.FK__KetQuaSoX__MaGia__1ED998B2">
+      <End Role="Giai" EntitySet="Giais" />
+      <End Role="KetQuaSoXo" EntitySet="KetQuaSoXoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KetQuaSoX__MaLoa__1DE57479" Association="Self.FK__KetQuaSoX__MaLoa__1DE57479">
+      <End Role="LoaiVeso" EntitySet="LoaiVesoes" />
+      <End Role="KetQuaSoXo" EntitySet="KetQuaSoXoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhatHanh__MaLoai__1920BF5C" Association="Self.FK__PhatHanh__MaLoai__1920BF5C">
+      <End Role="LoaiVeso" EntitySet="LoaiVesoes" />
+      <End Role="PhatHanh" EntitySet="PhatHanhs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

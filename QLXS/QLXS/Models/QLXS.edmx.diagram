@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="065bc5fb12c14e10ae4b1af14b31ecf7" Name="Diagram1">
+        <EntityTypeShape EntityType="QLVESOModel.DaiLy" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVESOModel.Giai" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVESOModel.KetQuaSoXo" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVESOModel.LoaiVeso" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVESOModel.PhatHanh" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVESOModel.PhieuChi" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVESOModel.PhieuThu" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVESOModel.SoLuongDK" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="QLVESOModel.FK__PhatHanh__MaDaiL__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVESOModel.FK__PhieuThu__Flag__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVESOModel.FK__SoLuongDK__MaDai__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVESOModel.FK__KetQuaSoX__MaGia__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVESOModel.FK__KetQuaSoX__MaLoa__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVESOModel.FK__PhatHanh__MaLoai__1920BF5C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
