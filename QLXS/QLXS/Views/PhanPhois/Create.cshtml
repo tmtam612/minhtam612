@@ -1,0 +1,86 @@
+﻿@model PagedList.IPagedList<QLXS.Models.PhanPhoi>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+
+    ViewBag.Title = "Create";
+}
+
+<h2>Thêm</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Phát Hành</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().MaPhanPhoi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().DaiLy.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().LoaiVeSo.Tinh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().NgayPhanPhoi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().SoLuongGiao)
+                    </th>
+                </tr>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.EditorFor(m => m[i].MaPhanPhoi, new { htmlAttributes = new { @style = "width:70px; display: none", @readonly = true } })
+                            @Model[i].MaPhanPhoi
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => m[i].DaiLy.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => m[i].LoaiVeSo.Tinh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => m[i].NgayPhanPhoi)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m[i].SoLuongGiao, new { @style = "width:70px", @required = true })
+                        </td>
+                    </tr>
+
+                }
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page }))
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <p>
+                    <input type="button" value="Back To List" class="btn btn-danger" onclick="location.href='@Url.Action("Index","PhanPhois")'" />
+                </p>
+            </div>
+            <div class="col-md-offset-2 col-md-2">
+                <p align="right">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </p>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

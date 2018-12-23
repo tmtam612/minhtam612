@@ -2,21 +2,27 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Thông Tin</h2>
+<h2>Thông Tin Chi Tiết</h2>
 
 <div>
     <h4>Đại Lý</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TenDaiLy)
+            @Html.DisplayNameFor(model => model.MaDaiLy)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenDaiLy)
+            @Html.DisplayFor(model => model.MaDaiLy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
         </dd>
 
         <dt>
@@ -28,19 +34,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SDT)
+            @Html.DisplayNameFor(model => model.DienThoai)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SDT)
+            @Html.DisplayFor(model => model.DienThoai)
         </dd>
-        
 
-        
+
 
     </dl>
+    <p>
+        <input type="button" value="Back To List" class="btn btn-danger" onclick="location.href='@Url.Action("Index","DaiLies")'" /><strong>|</strong>
+        <input type="button" value="Edit" class="btn btn-success" onclick="location.href='@Url.Action("Edit","DaiLies",new { id = Model.MaDaiLy })'" />
+
+
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.MaLoaiVeSo }) |*@
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDaiLy }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

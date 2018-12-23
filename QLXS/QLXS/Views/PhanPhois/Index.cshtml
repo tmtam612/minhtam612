@@ -1,0 +1,70 @@
+﻿@model PagedList.IPagedList<QLXS.Models.PhanPhoi>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh Sách</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        <label>Tìm Kiếm:</label> @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            Mã Phân Phối
+        </th>
+        <th>
+            Tên Đại Lý
+        </th>
+        <th>
+            Vé Số Tỉnh
+        </th>
+        <th>
+            Ngày Phân Phối
+        </th>
+        <th>
+            Số Lượng Giao
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaPhanPhoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaiLy.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiVeSo.Tinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayPhanPhoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongGiao)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaPhanPhoi }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaPhanPhoi }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaPhanPhoi })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+

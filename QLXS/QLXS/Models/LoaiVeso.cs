@@ -12,25 +12,28 @@ namespace QLXS.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    public partial class LoaiVeso
+
+    public partial class LoaiVeSo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LoaiVeso()
+        public LoaiVeSo()
         {
-            this.KetQuaSoXoes = new HashSet<KetQuaSoXo>();
-            this.PhatHanhs = new HashSet<PhatHanh>();
+            this.DangKies = new HashSet<DangKy>();
+            this.KetQuaXoSoes = new HashSet<KetQuaXoSo>();
+            this.PhanPhois = new HashSet<PhanPhoi>();
         }
-        [Display(Name ="Mã Loại Vé Số")]
+
+        [Display(Name = "Mã Loại Vé Số")]
         public string MaLoaiVeSo { get; set; }
-        [Display(Name ="Tỉnh")]
+        [Display(Name = "Tỉnh")]
         public string Tinh { get; set; }
-        [Display(Name ="Giá Vé")]
-        public Nullable<decimal> GiaVe { get; set; }
-        public Nullable<bool> Flag { get; set; }
+        public Nullable<bool> TinhTrang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KetQuaSoXo> KetQuaSoXoes { get; set; }
+        public virtual ICollection<DangKy> DangKies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhatHanh> PhatHanhs { get; set; }
+        public virtual ICollection<KetQuaXoSo> KetQuaXoSoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhanPhoi> PhanPhois { get; set; }
     }
 }

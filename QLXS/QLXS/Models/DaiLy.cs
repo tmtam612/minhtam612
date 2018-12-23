@@ -12,30 +12,32 @@ namespace QLXS.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     public partial class DaiLy
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DaiLy()
         {
-            this.PhatHanhs = new HashSet<PhatHanh>();
+            this.DangKies = new HashSet<DangKy>();
+            this.PhanPhois = new HashSet<PhanPhoi>();
             this.PhieuThus = new HashSet<PhieuThu>();
-            this.SoLuongDKs = new HashSet<SoLuongDK>();
         }
-        [Display(Name ="Mã Đại Lý")]
+
+        [Display(Name = "Mã Đại Lý")]
         public string MaDaiLy { get; set; }
         [Display(Name = "Tên Đại Lý")]
-        public string TenDaiLy { get; set; }
-        [Display(Name = "Địa chỉ")]
+        public string Ten { get; set; }
+        [Display(Name = "Địa Chỉ")]
         public string DiaChi { get; set; }
-        [Display(Name = "Số Điện Thoại")]
-        public string SDT { get; set; }
-        public Nullable<bool> Flag { get; set; }
+        [Display(Name = "Điện Thoại")]
+        public string DienThoai { get; set; }
+        public Nullable<bool> TinhTrang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhatHanh> PhatHanhs { get; set; }
+        public virtual ICollection<DangKy> DangKies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhanPhoi> PhanPhois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuThu> PhieuThus { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SoLuongDK> SoLuongDKs { get; set; }
     }
 }

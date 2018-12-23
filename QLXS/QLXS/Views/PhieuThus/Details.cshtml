@@ -1,0 +1,82 @@
+﻿@model QLXS.Models.PhieuThu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông Tin Chi Tiết</h2>
+
+<div>
+    <h4>Phiếu Thu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaPhieuThu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaPhieuThu)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DaiLy.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaiLy.Ten)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TienThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienThanhToan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTienThuDuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTienThuDuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CongNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CongNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoaHong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoaHong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaVe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaVe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <input type="button" value="Back To List" class="btn btn-danger" onclick="location.href='@Url.Action("Index","PhieuThus")'" /><strong>|</strong>
+    <input type="button" value="Edit" class="btn btn-success" onclick="location.href='@Url.Action("Edit","PhieuThus",new { id = Model.MaPhieuThu })'" />
+</p>

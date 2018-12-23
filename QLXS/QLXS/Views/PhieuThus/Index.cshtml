@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<QLXS.Models.PhieuThu>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        <label>Tìm Kiếm:</label> @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaPhieuThu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DaiLy.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Ngay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TienThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoTienThuDuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CongNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().HoaHong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GiaVe)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaPhieuThu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaiLy.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoTienThuDuoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CongNo)
+            </td>
+            <td>
+                @item.HoaHong%
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaVe)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaPhieuThu }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaPhieuThu }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaPhieuThu })
+            </td>
+        </tr>
+    }
+
+</table>

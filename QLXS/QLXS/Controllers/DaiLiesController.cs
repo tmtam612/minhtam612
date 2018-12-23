@@ -7,17 +7,26 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QLXS.Models;
+using PagedList;
 
 namespace QLXS.Controllers
 {
     public class DaiLiesController : Controller
     {
-        private QLVESOEntities db = new QLVESOEntities();
+        private QLVeSoEntities db = new QLVeSoEntities();
 
         // GET: DaiLies
-        public ActionResult Index()
+        public ActionResult Index(string searchString,int? page)
         {
-            return View(db.DaiLies.Where(s=>s.Flag==true).ToList());
+            var model = from d in db.DaiLies where d.TinhTrang == true select d;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                page = 1;
+                model = model.Where(x => x.MaDaiLy.Contains(searchString) || x.DiaChi.Contains(searchString)||x.Ten.Contains(searchString)||x.DienThoai.Contains(searchString)).Where(x => x.TinhTrang == true);
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(model.OrderBy(i => i.MaDaiLy).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: DaiLies/Details/5
@@ -46,22 +55,22 @@ namespace QLXS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDaiLy,TenDaiLy,DiaChi,SDT,Flag")] DaiLy daiLy)
+        public ActionResult Create([Bind(Include = "MaDaiLy,Ten,DiaChi,DienThoai,TinhTrang")] DaiLy daiLy)
         {
             if (ModelState.IsValid)
             {
-                var result = db.DaiLies.Count()+1;
+                var result = db.DaiLies.Count() + 1;
                 string x = "DL";
-                if(result<10)
+                if (result < 10)
                 {
-                    x +="0"+ result;
+                    x += "0" + result;
                 }
-                if(result>10)
+                if (result > 10)
                 {
                     x += result;
                 }
                 daiLy.MaDaiLy = x;
-                daiLy.Flag = true;
+                daiLy.TinhTrang = true;
                 db.DaiLies.Add(daiLy);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -90,11 +99,11 @@ namespace QLXS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDaiLy,TenDaiLy,DiaChi,SDT,Flag")] DaiLy daiLy)
+        public ActionResult Edit([Bind(Include = "MaDaiLy,Ten,DiaChi,DienThoai,TinhTrang")] DaiLy daiLy)
         {
             if (ModelState.IsValid)
             {
-                daiLy.Flag = true;
+                daiLy.TinhTrang = true;
                 db.Entry(daiLy).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -123,7 +132,7 @@ namespace QLXS.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             DaiLy daiLy = db.DaiLies.Find(id);
-            daiLy.Flag = false;
+            daiLy.TinhTrang = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

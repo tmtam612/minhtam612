@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +58,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -131,55 +138,69 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DaiLiesController.cs" />
+    <Compile Include="Controllers\DangKiesController.cs" />
+    <Compile Include="Controllers\GiaisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoaiVesoesController.cs" />
-    <Compile Include="Controllers\PhatHanhsController.cs" />
-    <Compile Include="Controllers\SoLuongDKsController.cs" />
+    <Compile Include="Controllers\KetQuaXoSoesController.cs" />
+    <Compile Include="Controllers\LoaiVeSoesController.cs" />
+    <Compile Include="Controllers\PhanPhoisController.cs" />
+    <Compile Include="Controllers\PhieuChisController.cs" />
+    <Compile Include="Controllers\PhieuThusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DaiLy.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DangKy.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Giai.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KetQuaSoXo.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+    <Compile Include="Models\KetQuaXoSo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoaiVeso.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+    <Compile Include="Models\LoaiVeSo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PhatHanh.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhanPhoi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuChi.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuThu.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLXS.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLXS.Context.tt</DependentUpon>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLXS.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLXS.tt</DependentUpon>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLXS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLXS.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SoLuongDK.cs">
-      <DependentUpon>QLXS.tt</DependentUpon>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\69464299-lucky-cat-card.jpg" />
     <Content Include="Content\assets\css\animate.css" />
     <Content Include="Content\assets\css\bootstrap-select.css" />
     <Content Include="Content\assets\css\bootstrap.css" />
@@ -287,6 +308,7 @@
     <Content Include="Content\assets\scss\widgets.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chuc-mung-sinh-nhat-thu-90-cua-mickey-chu-chuot-noi-tieng-nhat-t-879.jpg" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\images\.gitignore" />
     <Content Include="Content\images\admin.jpg" />
@@ -1067,19 +1089,21 @@
     <Content Include="Content\images\placeholder.png" />
     <Content Include="Content\images\twitter_corner_black.png" />
     <Content Include="Content\images\twitter_corner_blue.png" />
+    <Content Include="Content\index.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\QLXS.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLXS.edmx</DependentUpon>
-      <LastGenOutput>QLXS.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\QLXS.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLXS.edmx</DependentUpon>
-      <LastGenOutput>QLXS.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1369,12 +1393,12 @@
     <Content Include="Content\assets\scss\_gauge.scss" />
     <Content Include="Content\assets\scss\_switches.scss" />
     <Content Include="Content\assets\scss\_widgets.scss" />
-    <EntityDeploy Include="Models\QLXS.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLXS.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\QLXS.edmx.diagram">
-      <DependentUpon>QLXS.edmx</DependentUpon>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1388,7 +1412,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1402,26 +1428,55 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\SoLuongDKs\Create.cshtml" />
-    <Content Include="Views\SoLuongDKs\Delete.cshtml" />
-    <Content Include="Views\SoLuongDKs\Details.cshtml" />
-    <Content Include="Views\SoLuongDKs\Edit.cshtml" />
-    <Content Include="Views\SoLuongDKs\Index.cshtml" />
-    <Content Include="Views\PhatHanhs\Create.cshtml" />
-    <Content Include="Views\PhatHanhs\Delete.cshtml" />
-    <Content Include="Views\PhatHanhs\Details.cshtml" />
-    <Content Include="Views\PhatHanhs\Edit.cshtml" />
-    <Content Include="Views\PhatHanhs\Index.cshtml" />
+    <Content Include="Views\LoaiVeSoes\Create.cshtml" />
+    <Content Include="Views\LoaiVeSoes\Delete.cshtml" />
+    <Content Include="Views\LoaiVeSoes\Details.cshtml" />
+    <Content Include="Views\LoaiVeSoes\Edit.cshtml" />
+    <Content Include="Views\LoaiVeSoes\Index.cshtml" />
     <Content Include="Views\DaiLies\Create.cshtml" />
     <Content Include="Views\DaiLies\Delete.cshtml" />
     <Content Include="Views\DaiLies\Details.cshtml" />
     <Content Include="Views\DaiLies\Edit.cshtml" />
     <Content Include="Views\DaiLies\Index.cshtml" />
-    <Content Include="Views\LoaiVesoes\Create.cshtml" />
-    <Content Include="Views\LoaiVesoes\Delete.cshtml" />
-    <Content Include="Views\LoaiVesoes\Details.cshtml" />
-    <Content Include="Views\LoaiVesoes\Edit.cshtml" />
-    <Content Include="Views\LoaiVesoes\Index.cshtml" />
+    <Content Include="Views\DangKies\Create.cshtml" />
+    <Content Include="Views\DangKies\Details.cshtml" />
+    <Content Include="Views\DangKies\Edit.cshtml" />
+    <Content Include="Views\DangKies\Index.cshtml" />
+    <Content Include="Views\PhanPhois\Create.cshtml" />
+    <Content Include="Views\PhanPhois\Delete.cshtml" />
+    <Content Include="Views\PhanPhois\Details.cshtml" />
+    <Content Include="Views\PhanPhois\EditSoLuongBan.cshtml" />
+    <Content Include="Views\PhanPhois\Index.cshtml" />
+    <Content Include="Views\PhanPhois\ThemSLBan.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\Create.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\Delete.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\Details.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\Edit.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\Index.cshtml" />
+    <Content Include="Views\DangKies\Delete.cshtml" />
+    <Content Include="Views\PhanPhois\Edit.cshtml" />
+    <Content Include="Views\Giais\Create.cshtml" />
+    <Content Include="Views\Giais\Delete.cshtml" />
+    <Content Include="Views\Giais\Details.cshtml" />
+    <Content Include="Views\Giais\Edit.cshtml" />
+    <Content Include="Views\Giais\Index.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\DoSo.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\GoodLuckNextTime.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\HetHanSuDung.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\TrungSo.cshtml" />
+    <Content Include="Views\KetQuaXoSoes\TrungVeSo.cshtml" />
+    <Content Include="Views\PhieuThus\Create.cshtml" />
+    <Content Include="Views\PhieuThus\Delete.cshtml" />
+    <Content Include="Views\PhieuThus\Details.cshtml" />
+    <Content Include="Views\PhieuThus\Edit.cshtml" />
+    <Content Include="Views\PhieuThus\Index.cshtml" />
+    <Content Include="Views\PhieuThus\ThongKe.cshtml" />
+    <Content Include="Views\PhieuThus\ThongKeVeSo.cshtml" />
+    <Content Include="Views\PhieuChis\Create.cshtml" />
+    <Content Include="Views\PhieuChis\Delete.cshtml" />
+    <Content Include="Views\PhieuChis\Details.cshtml" />
+    <Content Include="Views\PhieuChis\Edit.cshtml" />
+    <Content Include="Views\PhieuChis\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

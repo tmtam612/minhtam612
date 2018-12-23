@@ -1,0 +1,102 @@
+﻿@model QLXS.Models.PhieuThu
+
+@{
+    ViewBag.Title = "ThongKeVeSo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int?[] VeSoPhatHanh = ViewBag.VeSoPhatHanh;
+    int?[] VeSoThuVe = ViewBag.VeSoThuVe;
+    int?[] VeSoDaBan = ViewBag.VeSoDaBan;
+}
+
+<h2>Thống Kê Phát Hành</h2>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div id="chart_div"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="clearfix" style="height:50px"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+
+                <div class="x_content">
+                    <div id="chart_div2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+// Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+         ['Tháng', 'Vé Số Phát Hành','Vé Số Trả Về'],
+            ['Tháng 1', @VeSoPhatHanh[1],@VeSoThuVe[1]],
+  ['Tháng 2', @VeSoPhatHanh[2],@VeSoThuVe[2]],
+  ['Tháng 3', @VeSoPhatHanh[3],@VeSoThuVe[3]],
+  ['Tháng 4', @VeSoPhatHanh[4],@VeSoThuVe[4]],
+  ['Tháng 5', @VeSoPhatHanh[5],@VeSoThuVe[5]],
+  ['Tháng 6', @VeSoPhatHanh[6],@VeSoThuVe[6]],
+  ['Tháng 7', @VeSoPhatHanh[7],@VeSoThuVe[7]],
+  ['Tháng 8', @VeSoPhatHanh[8],@VeSoThuVe[8]],
+  ['Tháng 9', @VeSoPhatHanh[9],@VeSoThuVe[9]],
+  ['Tháng 10', @VeSoPhatHanh[10],@VeSoThuVe[10]],
+  ['Tháng 11', @VeSoPhatHanh[11],@VeSoThuVe[11]],
+  ['Tháng 12', @VeSoPhatHanh[12],@VeSoThuVe[12]]
+    ]);
+
+    
+    var options = { 'title': 'So Sánh Số Lượng Vé Số Phát Hành và Vé Số Trả Về Theo Tháng Trong Năm', 'width': 1000, 'height':500};
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+
+}
+</script>
+<script type="text/javascript">
+// Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+         ['Tháng', 'Vé Số Phát Hành','Vé Số Bán Được'],
+            ['Tháng 1', @VeSoPhatHanh[1],@VeSoDaBan[1]],
+  ['Tháng 2', @VeSoPhatHanh[2],@VeSoDaBan[2]],
+  ['Tháng 3', @VeSoPhatHanh[3],@VeSoDaBan[3]],
+  ['Tháng 4', @VeSoPhatHanh[4],@VeSoDaBan[4]],
+  ['Tháng 5', @VeSoPhatHanh[5],@VeSoDaBan[5]],
+  ['Tháng 6', @VeSoPhatHanh[6],@VeSoDaBan[6]],
+  ['Tháng 7', @VeSoPhatHanh[7],@VeSoDaBan[7]],
+  ['Tháng 8', @VeSoPhatHanh[8],@VeSoDaBan[8]],
+  ['Tháng 9', @VeSoPhatHanh[9],@VeSoDaBan[9]],
+  ['Tháng 10', @VeSoPhatHanh[10],@VeSoDaBan[10]],
+  ['Tháng 11', @VeSoPhatHanh[11],@VeSoDaBan[11]],
+  ['Tháng 12', @VeSoPhatHanh[12],@VeSoDaBan[12]]
+    ]);
+
+
+    var options = { 'title': 'So Sánh Số Lượng Vé Số Phát Hành và Vé Số Đã Bán Theo Tháng Trong Năm', 'width': 1000, 'height':500};
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+
+    chart.draw(data, options);
+
+}
+</script>
+

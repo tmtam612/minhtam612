@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLVeSoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DaiLy">
+          <Key>
+            <PropertyRef Name="MaDaiLy" />
+          </Key>
+          <Property Name="MaDaiLy" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+          <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
+          <Property Name="TinhTrang" Type="bit" />
+        </EntityType>
+        <EntityType Name="DangKy">
+          <Key>
+            <PropertyRef Name="MaDangKy" />
+          </Key>
+          <Property Name="MaDangKy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaDaiLy" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaLoaiVeSo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NgayDangKy" Type="date" />
+          <Property Name="NgayPhanPhoi" Type="date" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="TinhTrang" Type="bit" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Giai">
+          <Key>
+            <PropertyRef Name="MaGiai" />
+          </Key>
+          <Property Name="MaGiai" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="GiaiThuong" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="bit" />
+        </EntityType>
+        <EntityType Name="KetQuaXoSo">
+          <Key>
+            <PropertyRef Name="MaKetQua" />
+          </Key>
+          <Property Name="MaKetQua" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaLoaiVeSo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ngay" Type="date" />
+          <Property Name="SoTrung" Type="varchar" MaxLength="20" />
+          <Property Name="TinhTrang" Type="bit" />
+        </EntityType>
+        <EntityType Name="LoaiVeSo">
+          <Key>
+            <PropertyRef Name="MaLoaiVeSo" />
+          </Key>
+          <Property Name="MaLoaiVeSo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="TinhTrang" Type="bit" />
+        </EntityType>
+        <EntityType Name="PhanPhoi">
+          <Key>
+            <PropertyRef Name="MaPhanPhoi" />
+          </Key>
+          <Property Name="MaPhanPhoi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaDaiLy" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaLoaiVeSo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NgayPhanPhoi" Type="date" />
+          <Property Name="SoLuongGiao" Type="int" />
+          <Property Name="SoLuongBan" Type="int" />
+          <Property Name="TiLe" Type="float" />
+          <Property Name="TinhTrang" Type="bit" />
+        </EntityType>
+        <EntityType Name="PhieuChi">
+          <Key>
+            <PropertyRef Name="MaPhieuChi" />
+          </Key>
+          <Property Name="MaPhieuChi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ngay" Type="date" />
+          <Property Name="TongTien" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="bit" />
+        </EntityType>
+        <EntityType Name="PhieuThu">
+          <Key>
+            <PropertyRef Name="MaPhieuThu" />
+          </Key>
+          <Property Name="MaPhieuThu" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaDaiLy" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ngay" Type="date" />
+          <Property Name="TienThanhToan" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SoTienThuDuoc" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CongNo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="HoaHong" Type="int" />
+          <Property Name="GiaVe" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_DangKy_DaiLy_IdDaiLy">
+          <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+          <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaiLy">
+              <PropertyRef Name="MaDaiLy" />
+            </Principal>
+            <Dependent Role="DangKy">
+              <PropertyRef Name="MaDaiLy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKy_LoaiVeSo_IdLoaiVeSo">
+          <End Role="LoaiVeSo" Type="Self.LoaiVeSo" Multiplicity="1" />
+          <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiVeSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Principal>
+            <Dependent Role="DangKy">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo">
+          <End Role="LoaiVeSo" Type="Self.LoaiVeSo" Multiplicity="1" />
+          <End Role="KetQuaXoSo" Type="Self.KetQuaXoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiVeSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Principal>
+            <Dependent Role="KetQuaXoSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhanPhoi_DaiLy_IdDaiLy">
+          <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+          <End Role="PhanPhoi" Type="Self.PhanPhoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaiLy">
+              <PropertyRef Name="MaDaiLy" />
+            </Principal>
+            <Dependent Role="PhanPhoi">
+              <PropertyRef Name="MaDaiLy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo">
+          <End Role="LoaiVeSo" Type="Self.LoaiVeSo" Multiplicity="1" />
+          <End Role="PhanPhoi" Type="Self.PhanPhoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiVeSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Principal>
+            <Dependent Role="PhanPhoi">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuThu_DaiLy_IdDaiLy">
+          <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaiLy">
+              <PropertyRef Name="MaDaiLy" />
+            </Principal>
+            <Dependent Role="PhieuThu">
+              <PropertyRef Name="MaDaiLy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Them_PhanPhoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="QLVeSoModelStoreContainer">
+          <EntitySet Name="DaiLy" EntityType="Self.DaiLy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DangKy" EntityType="Self.DangKy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Giai" EntityType="Self.Giai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KetQuaXoSo" EntityType="Self.KetQuaXoSo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiVeSo" EntityType="Self.LoaiVeSo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanPhoi" EntityType="Self.PhanPhoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuChi" EntityType="Self.PhieuChi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuThu" EntityType="Self.PhieuThu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DangKy_DaiLy_IdDaiLy" Association="Self.FK_DangKy_DaiLy_IdDaiLy">
+            <End Role="DaiLy" EntitySet="DaiLy" />
+            <End Role="DangKy" EntitySet="DangKy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKy_LoaiVeSo_IdLoaiVeSo" Association="Self.FK_DangKy_LoaiVeSo_IdLoaiVeSo">
+            <End Role="LoaiVeSo" EntitySet="LoaiVeSo" />
+            <End Role="DangKy" EntitySet="DangKy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo" Association="Self.FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo">
+            <End Role="LoaiVeSo" EntitySet="LoaiVeSo" />
+            <End Role="KetQuaXoSo" EntitySet="KetQuaXoSo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanPhoi_DaiLy_IdDaiLy" Association="Self.FK_PhanPhoi_DaiLy_IdDaiLy">
+            <End Role="DaiLy" EntitySet="DaiLy" />
+            <End Role="PhanPhoi" EntitySet="PhanPhoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo" Association="Self.FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo">
+            <End Role="LoaiVeSo" EntitySet="LoaiVeSo" />
+            <End Role="PhanPhoi" EntitySet="PhanPhoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DaiLy_IdDaiLy" Association="Self.FK_PhieuThu_DaiLy_IdDaiLy">
+            <End Role="DaiLy" EntitySet="DaiLy" />
+            <End Role="PhieuThu" EntitySet="PhieuThu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLVeSoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DaiLy">
+          <Key>
+            <PropertyRef Name="MaDaiLy" />
+          </Key>
+          <Property Name="MaDaiLy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TinhTrang" Type="Boolean" />
+          <NavigationProperty Name="DangKies" Relationship="Self.FK_DangKy_DaiLy_IdDaiLy" FromRole="DaiLy" ToRole="DangKy" />
+          <NavigationProperty Name="PhanPhois" Relationship="Self.FK_PhanPhoi_DaiLy_IdDaiLy" FromRole="DaiLy" ToRole="PhanPhoi" />
+          <NavigationProperty Name="PhieuThus" Relationship="Self.FK_PhieuThu_DaiLy_IdDaiLy" FromRole="DaiLy" ToRole="PhieuThu" />
+        </EntityType>
+        <EntityType Name="DangKy">
+          <Key>
+            <PropertyRef Name="MaDangKy" />
+          </Key>
+          <Property Name="MaDangKy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaDaiLy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiVeSo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+          <Property Name="NgayPhanPhoi" Type="DateTime" Precision="0" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="TinhTrang" Type="Boolean" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="DaiLy" Relationship="Self.FK_DangKy_DaiLy_IdDaiLy" FromRole="DangKy" ToRole="DaiLy" />
+          <NavigationProperty Name="LoaiVeSo" Relationship="Self.FK_DangKy_LoaiVeSo_IdLoaiVeSo" FromRole="DangKy" ToRole="LoaiVeSo" />
+        </EntityType>
+        <EntityType Name="Giai">
+          <Key>
+            <PropertyRef Name="MaGiai" />
+          </Key>
+          <Property Name="MaGiai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GiaiThuong" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="KetQuaXoSo">
+          <Key>
+            <PropertyRef Name="MaKetQua" />
+          </Key>
+          <Property Name="MaKetQua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiVeSo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ngay" Type="DateTime" Precision="0" />
+          <Property Name="SoTrung" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TinhTrang" Type="Boolean" />
+          <NavigationProperty Name="LoaiVeSo" Relationship="Self.FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo" FromRole="KetQuaXoSo" ToRole="LoaiVeSo" />
+        </EntityType>
+        <EntityType Name="LoaiVeSo">
+          <Key>
+            <PropertyRef Name="MaLoaiVeSo" />
+          </Key>
+          <Property Name="MaLoaiVeSo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TinhTrang" Type="Boolean" />
+          <NavigationProperty Name="DangKies" Relationship="Self.FK_DangKy_LoaiVeSo_IdLoaiVeSo" FromRole="LoaiVeSo" ToRole="DangKy" />
+          <NavigationProperty Name="KetQuaXoSoes" Relationship="Self.FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo" FromRole="LoaiVeSo" ToRole="KetQuaXoSo" />
+          <NavigationProperty Name="PhanPhois" Relationship="Self.FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo" FromRole="LoaiVeSo" ToRole="PhanPhoi" />
+        </EntityType>
+        <EntityType Name="PhanPhoi">
+          <Key>
+            <PropertyRef Name="MaPhanPhoi" />
+          </Key>
+          <Property Name="MaPhanPhoi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaDaiLy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiVeSo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NgayPhanPhoi" Type="DateTime" Precision="0" />
+          <Property Name="SoLuongGiao" Type="Int32" />
+          <Property Name="SoLuongBan" Type="Int32" />
+          <Property Name="TiLe" Type="Double" />
+          <Property Name="TinhTrang" Type="Boolean" />
+          <NavigationProperty Name="DaiLy" Relationship="Self.FK_PhanPhoi_DaiLy_IdDaiLy" FromRole="PhanPhoi" ToRole="DaiLy" />
+          <NavigationProperty Name="LoaiVeSo" Relationship="Self.FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo" FromRole="PhanPhoi" ToRole="LoaiVeSo" />
+        </EntityType>
+        <EntityType Name="PhieuChi">
+          <Key>
+            <PropertyRef Name="MaPhieuChi" />
+          </Key>
+          <Property Name="MaPhieuChi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ngay" Type="DateTime" Precision="0" />
+          <Property Name="TongTien" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PhieuThu">
+          <Key>
+            <PropertyRef Name="MaPhieuThu" />
+          </Key>
+          <Property Name="MaPhieuThu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaDaiLy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ngay" Type="DateTime" Precision="0" />
+          <Property Name="TienThanhToan" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SoTienThuDuoc" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CongNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HoaHong" Type="Int32" />
+          <Property Name="GiaVe" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="Boolean" />
+          <NavigationProperty Name="DaiLy" Relationship="Self.FK_PhieuThu_DaiLy_IdDaiLy" FromRole="PhieuThu" ToRole="DaiLy" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_DangKy_DaiLy_IdDaiLy">
+          <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+          <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaiLy">
+              <PropertyRef Name="MaDaiLy" />
+            </Principal>
+            <Dependent Role="DangKy">
+              <PropertyRef Name="MaDaiLy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhanPhoi_DaiLy_IdDaiLy">
+          <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+          <End Role="PhanPhoi" Type="Self.PhanPhoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaiLy">
+              <PropertyRef Name="MaDaiLy" />
+            </Principal>
+            <Dependent Role="PhanPhoi">
+              <PropertyRef Name="MaDaiLy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuThu_DaiLy_IdDaiLy">
+          <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+          <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaiLy">
+              <PropertyRef Name="MaDaiLy" />
+            </Principal>
+            <Dependent Role="PhieuThu">
+              <PropertyRef Name="MaDaiLy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKy_LoaiVeSo_IdLoaiVeSo">
+          <End Role="LoaiVeSo" Type="Self.LoaiVeSo" Multiplicity="1" />
+          <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiVeSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Principal>
+            <Dependent Role="DangKy">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo">
+          <End Role="LoaiVeSo" Type="Self.LoaiVeSo" Multiplicity="1" />
+          <End Role="KetQuaXoSo" Type="Self.KetQuaXoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiVeSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Principal>
+            <Dependent Role="KetQuaXoSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo">
+          <End Role="LoaiVeSo" Type="Self.LoaiVeSo" Multiplicity="1" />
+          <End Role="PhanPhoi" Type="Self.PhanPhoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiVeSo">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Principal>
+            <Dependent Role="PhanPhoi">
+              <PropertyRef Name="MaLoaiVeSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLVeSoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DaiLies" EntityType="Self.DaiLy" />
+          <EntitySet Name="DangKies" EntityType="Self.DangKy" />
+          <EntitySet Name="Giais" EntityType="Self.Giai" />
+          <EntitySet Name="KetQuaXoSoes" EntityType="Self.KetQuaXoSo" />
+          <EntitySet Name="LoaiVeSoes" EntityType="Self.LoaiVeSo" />
+          <EntitySet Name="PhanPhois" EntityType="Self.PhanPhoi" />
+          <EntitySet Name="PhieuChis" EntityType="Self.PhieuChi" />
+          <EntitySet Name="PhieuThus" EntityType="Self.PhieuThu" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_DangKy_DaiLy_IdDaiLy" Association="Self.FK_DangKy_DaiLy_IdDaiLy">
+            <End Role="DaiLy" EntitySet="DaiLies" />
+            <End Role="DangKy" EntitySet="DangKies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanPhoi_DaiLy_IdDaiLy" Association="Self.FK_PhanPhoi_DaiLy_IdDaiLy">
+            <End Role="DaiLy" EntitySet="DaiLies" />
+            <End Role="PhanPhoi" EntitySet="PhanPhois" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuThu_DaiLy_IdDaiLy" Association="Self.FK_PhieuThu_DaiLy_IdDaiLy">
+            <End Role="DaiLy" EntitySet="DaiLies" />
+            <End Role="PhieuThu" EntitySet="PhieuThus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKy_LoaiVeSo_IdLoaiVeSo" Association="Self.FK_DangKy_LoaiVeSo_IdLoaiVeSo">
+            <End Role="LoaiVeSo" EntitySet="LoaiVeSoes" />
+            <End Role="DangKy" EntitySet="DangKies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo" Association="Self.FK_KetQuaXoSo_LoaiVeSo_IdLoaiVeSo">
+            <End Role="LoaiVeSo" EntitySet="LoaiVeSoes" />
+            <End Role="KetQuaXoSo" EntitySet="KetQuaXoSoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo" Association="Self.FK_PhanPhoi_LoaiVeSo_IdLoaiVeSo">
+            <End Role="LoaiVeSo" EntitySet="LoaiVeSoes" />
+            <End Role="PhanPhoi" EntitySet="PhanPhois" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLVeSoModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLVeSoModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="Them_PhanPhoi" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLVeSoModelStoreContainer" CdmEntityContainer="QLVeSoEntities">
+          <EntitySetMapping Name="DaiLies">
+            <EntityTypeMapping TypeName="QLVeSoModel.DaiLy">
+              <MappingFragment StoreEntitySet="DaiLy">
+                <ScalarProperty Name="MaDaiLy" ColumnName="MaDaiLy" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DangKies">
+            <EntityTypeMapping TypeName="QLVeSoModel.DangKy">
+              <MappingFragment StoreEntitySet="DangKy">
+                <ScalarProperty Name="MaDangKy" ColumnName="MaDangKy" />
+                <ScalarProperty Name="MaDaiLy" ColumnName="MaDaiLy" />
+                <ScalarProperty Name="MaLoaiVeSo" ColumnName="MaLoaiVeSo" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+                <ScalarProperty Name="NgayPhanPhoi" ColumnName="NgayPhanPhoi" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Giais">
+            <EntityTypeMapping TypeName="QLVeSoModel.Giai">
+              <MappingFragment StoreEntitySet="Giai">
+                <ScalarProperty Name="MaGiai" ColumnName="MaGiai" />
+                <ScalarProperty Name="GiaiThuong" ColumnName="GiaiThuong" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KetQuaXoSoes">
+            <EntityTypeMapping TypeName="QLVeSoModel.KetQuaXoSo">
+              <MappingFragment StoreEntitySet="KetQuaXoSo">
+                <ScalarProperty Name="MaKetQua" ColumnName="MaKetQua" />
+                <ScalarProperty Name="MaLoaiVeSo" ColumnName="MaLoaiVeSo" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="SoTrung" ColumnName="SoTrung" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiVeSoes">
+            <EntityTypeMapping TypeName="QLVeSoModel.LoaiVeSo">
+              <MappingFragment StoreEntitySet="LoaiVeSo">
+                <ScalarProperty Name="MaLoaiVeSo" ColumnName="MaLoaiVeSo" />
+                <ScalarProperty Name="Tinh" ColumnName="Tinh" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhanPhois">
+            <EntityTypeMapping TypeName="QLVeSoModel.PhanPhoi">
+              <MappingFragment StoreEntitySet="PhanPhoi">
+                <ScalarProperty Name="MaPhanPhoi" ColumnName="MaPhanPhoi" />
+                <ScalarProperty Name="MaDaiLy" ColumnName="MaDaiLy" />
+                <ScalarProperty Name="MaLoaiVeSo" ColumnName="MaLoaiVeSo" />
+                <ScalarProperty Name="NgayPhanPhoi" ColumnName="NgayPhanPhoi" />
+                <ScalarProperty Name="SoLuongGiao" ColumnName="SoLuongGiao" />
+                <ScalarProperty Name="SoLuongBan" ColumnName="SoLuongBan" />
+                <ScalarProperty Name="TiLe" ColumnName="TiLe" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuChis">
+            <EntityTypeMapping TypeName="QLVeSoModel.PhieuChi">
+              <MappingFragment StoreEntitySet="PhieuChi">
+                <ScalarProperty Name="MaPhieuChi" ColumnName="MaPhieuChi" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuThus">
+            <EntityTypeMapping TypeName="QLVeSoModel.PhieuThu">
+              <MappingFragment StoreEntitySet="PhieuThu">
+                <ScalarProperty Name="MaPhieuThu" ColumnName="MaPhieuThu" />
+                <ScalarProperty Name="MaDaiLy" ColumnName="MaDaiLy" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="TienThanhToan" ColumnName="TienThanhToan" />
+                <ScalarProperty Name="SoTienThuDuoc" ColumnName="SoTienThuDuoc" />
+                <ScalarProperty Name="CongNo" ColumnName="CongNo" />
+                <ScalarProperty Name="HoaHong" ColumnName="HoaHong" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLVeSoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QLVeSoModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QLVeSoModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QLVeSoModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QLVeSoModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLVeSoModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QLVeSoModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLVeSoModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QLVeSoModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QLVeSoModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Them_PhanPhoi" FunctionName="QLVeSoModel.Store.Them_PhanPhoi" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

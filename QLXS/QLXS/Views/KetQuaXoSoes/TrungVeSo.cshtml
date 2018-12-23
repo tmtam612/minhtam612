@@ -1,0 +1,48 @@
+﻿@model QLXS.Models.Giai
+
+@{
+    ViewBag.Title = "TrungSo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chúc Mừng Bạn!</h2>
+
+<div>
+    <h4>Giải Thưởng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (Model.MaGiai == "GDB")
+        {
+            <p><h3>Giải Đặc Biệt</h3></p>
+        }
+        @if (Model.MaGiai == "GKK")
+        {
+            <p><h3>Giải Khuyến Khích</h3></p>
+        }
+        @if (Model.MaGiai == "G04")
+        {
+            <p><h3>Giải Tư</h3></p>
+        }
+        @if (Model.MaGiai == "G03")
+        {
+            <p><h3>Giải Ba</h3></p>
+        }
+        @if (Model.MaGiai == "G02")
+        {
+            <p><h3>Giải Nhì</h3></p>
+        }
+        @if (Model.MaGiai == "G01")
+        {
+            <p><h3>Giải Nhất</h3></p>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaiThuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaiThuong)
+        </dd>
+
+    </dl>
+    <img src="~/Content/69464299-lucky-cat-card.jpg" alt="Bạn Đã Trúng Số" style="width:100%;height:auto;align-content:center" />
+</div>

@@ -1,0 +1,78 @@
+﻿@model PagedList.IPagedList<QLXS.Models.DangKy>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh Sách</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        <label>Tìm Kiếm:</label>@Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Thêm Mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaDangKy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DaiLy.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().LoaiVeSo.Tinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayDangKy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayPhanPhoi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoLuong)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDangKy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaiLy.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiVeSo.Tinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDangKy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayPhanPhoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaDangKy }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaDangKy }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.MaDangKy})
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))

@@ -1,0 +1,64 @@
+﻿@model QLXS.Models.DangKy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Thông Tin Chi Tiết</h2>
+
+<div>
+    <h4>Đăng Kí</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDangKy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaDangKy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DaiLy.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaiLy.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiVeSo.Tinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiVeSo.Tinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayPhanPhoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayPhanPhoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <input type="button" value="Back To List" class="btn btn-danger" onclick="location.href='@Url.Action("Index","DangKies")'" /><strong>|</strong>
+    <input type="button" value="Edit" class="btn btn-success" onclick="location.href='@Url.Action("Edit","DangKies",new { id = Model.MaDangKy })'" />
+</p>

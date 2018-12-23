@@ -35,38 +35,79 @@
             </div>
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    
+
                     <h3 class="menu-title">Quản lý vé số</h3>
                     <!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Phiếu Đăng Ký</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i>@Html.ActionLink("Thêm","Create","SoLuongDKs")</li>
-                            <li><i class="fa fa-id-badge"></i>@Html.ActionLink("Chỉnh sửa","index","SoLuongDKs")</li>
+                            <li><i class="fa fa-id-badge"></i>@Html.ActionLink("Danh Sách", "Index", "DangKies")</li>
+                            <li><i class="fa fa-puzzle-piece"></i>@Html.ActionLink("Thêm", "Create", "DangKies")</li>
+
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Phát hành</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i>@Html.ActionLink("Thêm","Create","PhatHanhs")</li>
-                            <li><i class="fa fa-table"></i>@Html.ActionLink("Chỉnh sửa","Index","PhatHanhs")</li>
+                            <li><i class="fa fa-table"></i>@Html.ActionLink("Danh Sách", "Index", "PhanPhois")</li>
+                            <li><i class="fa fa-table"></i>@Html.ActionLink("Thêm", "Create", "PhanPhois")</li>
+                            <li><i class="fa fa-table"></i>@Html.ActionLink("Thêm Số Lượng Bán", "ThemSLBan", "PhanPhois")</li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Đại Lý</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Thêm","Create","DaiLies")</li>
-                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Chỉnh sửa","Index","DaiLies")</li>
+                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Danh Sách", "Index", "DaiLies")</li>
+                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Thêm", "Create", "DaiLies")</li>
+
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Loại Vé Số</a>
                         <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Danh Sách", "Index", "LoaiVesoes")</li>
                             <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Thêm", "Create", "LoaiVesoes")</li>
-                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Chỉnh sửa", "Index", "LoaiVesoes")</li>
-                        </ul>
-                    </li
 
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Kết Quả Xổ Số</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-id-badge"></i>@Html.ActionLink("Danh Sách", "Index", "KetQuaXoSoes")</li>
+                            <li><i class="fa fa-puzzle-piece"></i>@Html.ActionLink("Thêm", "Create", "KetQuaXoSoes")</li>
+                            <li><i class="fa fa-puzzle-piece"></i>@Html.ActionLink("Dò Số", "DoSo", "KetQuaXoSoes")</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Giải Thưởng</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-id-badge"></i>@Html.ActionLink("Danh Sách", "Index", "Giais")</li>
+                            <li><i class="fa fa-puzzle-piece"></i>@Html.ActionLink("Thêm", "Create", "Giais")</li>
+
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Phiếu Thu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i>@Html.ActionLink("Danh Sách", "Index", "PhieuThus")</li>
+                            <li><i class="fa fa-table"></i>@Html.ActionLink("Thêm", "Create", "PhieuThus")</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Thống Kê</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i>@Html.ActionLink("Thống Kê Doanh Thu", "ThongKe", "PhieuThus")</li>
+                            <li><i class="fa fa-puzzle-piece"></i>@Html.ActionLink("Thống Kê Phát Hành", "ThongKeVeSo", "PhieuThus")</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Phiếu Chi</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Danh Sách", "Index", "PhieuChis")</li>
+                            <li><i class="menu-icon fa fa-th"></i>@Html.ActionLink("Thêm", "Create", "PhieuChis")</li>
+
+                        </ul>
+                    </li>
                 </ul>
                
             </div><!-- /.navbar-collapse -->
@@ -191,8 +232,14 @@
         <!-- Header-->
         
         <div class="content mt-3">
-            @RenderBody()
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide" style="text-align: center;">
+                    @TempData["AlertMessage"]
+                </div>
+            }
 
+            @RenderBody()
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
     <!-- Right Panel -->

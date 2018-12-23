@@ -1,0 +1,72 @@
+﻿@model QLXS.Models.DangKy
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có Chắc Muốn Xóa?</h3>
+<div>
+    <h4>Đăng Ký</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDangKy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DaiLy.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaiLy.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiVeSo.Tinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiVeSo.Tinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayPhanPhoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayPhanPhoi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="button" value="Back To List" class="btn btn-success" onclick="location.href='@Url.Action("Index","DangKies")'" />|
+            <input type="submit" value="Delete" class="btn btn-danger" />
+
+        </div>
+    }
+</div>
+
