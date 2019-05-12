@@ -14,10 +14,10 @@ class UsersLogic {
 			'conditions' => [
 				'delete_flg' => 0,
 			]
-		])->toList();
+		])->where(["delete_flg" => 0]);
 	}
 	public function addUser($data) {
-		$userEntity = $this->userTb->newEntity();
+		$userEntity = $this->userTb->newEntity($data);
 		$user = new User();
 		$user = $this->userTb->patchEntity($user, $data);
 		$hash = new DefaultPasswordHasher();
@@ -26,7 +26,7 @@ class UsersLogic {
 		$user->modified = date('Y-m-d');
 		$user->delete_flg = 0;
 		if($this->userTb->save($user)) return 1;
-		else return -1;
+		else return $userEntity->errors();
 	}
 	public function getUser($id) {
 		return $this->userTb->get($id);

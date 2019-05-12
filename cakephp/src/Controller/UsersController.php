@@ -7,7 +7,7 @@ class UsersController extends AppController {
 	public function index() {
 		$user = new UsersLogic();
 		$result = $user->getAllUsers();
-		$result = $this->paginate($this->Users);
+		$result = $this->paginate($result);
 		$this->set(compact('result'));
 	}
 	public function addUser($item = null) {
@@ -19,6 +19,7 @@ class UsersController extends AppController {
 		if($this->request->is('post')) {
 			$data = $this->request->getData();
 			$saveResult = $userObject->addUser($data);
+			debug($saveResult);exit;
 			if($saveResult == 1) {
 				$result['type'] = 'success';
 				$result['message'] = 'The user has been saved';
@@ -55,8 +56,7 @@ class UsersController extends AppController {
 			else {
 				$saveResult = $userObject->editUser($user,$data);
 				if($saveResult == 1) {
-					$result['type'] = 'success';
-					$result['message'] = 'The user has been edited successfully';
+					$this->Flash->success("abc");
 				}
 				else {
 					$result['type'] = 'danger';

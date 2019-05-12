@@ -68,7 +68,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	    		<tr>
 	    			<th hidden="true"></th>
 	    			<th><?php echo $this->Paginator->sort('email') ?></th>
-	    			<th><?php echo $this->Paginator->sort('Created') ?></th>
+	    			<th><?php echo $this->Paginator->sort('created') ?></th>
 	    		</tr>
     		</thead>
     		<tbody>
