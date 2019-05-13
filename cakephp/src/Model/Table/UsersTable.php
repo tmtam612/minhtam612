@@ -12,29 +12,74 @@ class UsersTable extends Table {
  		$this->setTable('users');
 		$this->setDisplayField('id');
 		$this->setPrimaryKey('id'); 
-		$this->addBehavior('Timestamp'); 
+		$this->addBehavior('Timestamp');
 	}
 	public function validationDefault(Validator $validator)
 	{
-	    $validator
-	        ->notEmpty('email', 'Please fill this field')
-	        ->maxLength('email', 255)
-	        ->minLength('email', 10)
-	        ->add('email', 'unique', [
-                    'rule' => 'validateUnique',
-                    'provider' => 'table',
-                    'message' => 'Email is already used'
-             ]);
+		$validator
+			->email('email')
+			->add('email',[
+				'notEmpty' => [
+					'rule' => 'notEmpty',
+					'last' => true,
+					'message' => 'Please fill this field',
+				],
+				'maxLength' => [
+					'rule' => ['maxLength' , 50],
+					'last' => true,
+					'message' => 'Email must be less than 50 characters',
+				],
+				'minLength' => [
+					'rule' => ['minLength' , 8],
+					'last' => true,
+					'message' => 'Email must be more than 8 characters',
+				],
+				'unique' => [
+					'rule' => 'validateUnique',
+					'provider' => 'table',
+					'message' => 'Email is already used',
+				]
+			]);
 
+		$validator
+			->add('password',[
+				'notEmpty' => [
+					'rule' => 'notEmpty',
+					'last' => true,
+					'message' => 'Please fill this field',
+				],
+				'maxLength' => [
+					'rule' => ['maxLength' , 50],
+					'last' => true,
+					'message' => 'Password must be less than 50 characters',
+				],
+				'minLength' => [
+					'rule' => ['minLength' , 8],
+					'last' => true,
+					'message' => 'Password must be more than 8 characters',
+				],
+			]);	
+		$validator
+			->sameas('password_confirm','password','Password confirm must be same as password')
+			->add('password_confirm',[
+				'notEmpty' => [
+					'rule' => 'notEmpty',
+					'last' => true,
+					'message' => 'Please fill this field',
+				],
+				'maxLength' => [
+					'rule' => ['maxLength' , 50],
+					'last' => true,
+					'message' => 'Password must be less than 50 characters',
+				],
+				'minLength' => [
+					'rule' => ['minLength' , 8],
+					'last' => true,
+					'message' => 'Password must be more than 8 characters',
+				],
+			]);		
 	    return $validator;
 	}
-	public function buildRules(RulesChecker $rules)
-    {
-       $rules->add([$this, 'validateUnique'], 'validateUnique', [
-    'errorField' => 'email',
-    'message' => 'This invoice cannot be moved to that status.'
-]);
-        return $rules;
-    }
+
 }
 ?>

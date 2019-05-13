@@ -11,26 +11,15 @@ class UsersController extends AppController {
 		$this->set(compact('result'));
 	}
 	public function addUser($item = null) {
-		$this->layout = "ajax";
-		$data = [];
-		$result = [];
-		$userObject = new UsersLogic();
+		$saveResult = [];
 		$user = new User();
 		if($this->request->is('post')) {
+			$userObject = new UsersLogic();
 			$data = $this->request->getData();
-			$saveResult = $userObject->addUser($data);
-			debug($saveResult);exit;
-			if($saveResult == 1) {
-				$result['type'] = 'success';
-				$result['message'] = 'The user has been saved';
-			}
-			else {
-				$result['type'] = 'danger';
-				$result['message'] = 'The user has errors';
-			}
+			$saveResult = $userObject->addUser($user,$data);
 		}
-		$this->set(compact('result','user'));
-		$this->set('_serialize','result');
+		$this->set(compact('saveResult','user'));
+		$this->set('_serialize','saveResult');
 		
 	}
 	public function editUser($item = null) {
