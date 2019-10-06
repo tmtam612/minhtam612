@@ -101,12 +101,11 @@
 	}
 	function addUser(e) {
 		e.preventDefault();
-		$.ajax({
+		$('#myModal').modal();
+		$.get({
 			url: 'http://localhost:8080/cakephp2/Users/addUser',
-			type: 'POST',
 			success: function(res) {
-				$('#myModal').modal('show').find('.modal-content').load(res);
-				// $('#myModal .modal-body').append(res);
+				$('#myModal').append(res);
 			}
 		});
 	}

@@ -3627,3 +3627,484 @@ SELECT DISTINCT table_schema AS schema,
 				ORDER BY ordinal_position
 SELECT "User"."email" AS "User__email" FROM "public"."users" AS "User"   WHERE "delete_flg" = 'FALSE' AND "email" = 'tmtam612@gmail.com' AND "password" = '$2a$10$CBQT5MI0tWQbKnDvVbVr/OOYUTAUbll2L1Z8sp9k4iUR7CMKcOLya'
 SET search_path TO "public"
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position
+SET search_path TO "public"
+SELECT table_name as name FROM INFORMATION_SCHEMA.tables WHERE table_schema = ?
+SELECT DISTINCT table_schema AS schema,
+					column_name AS name,
+					data_type AS type,
+					is_nullable AS null,
+					column_default AS default,
+					ordinal_position AS position,
+					character_maximum_length AS char_length,
+					character_octet_length AS oct_length,
+					pg_get_serial_sequence(attr.attrelid::regclass::text, attr.attname) IS NOT NULL AS has_serial
+				FROM information_schema.columns c
+				INNER JOIN pg_catalog.pg_namespace ns ON (ns.nspname = table_schema)
+				INNER JOIN pg_catalog.pg_class cl ON (cl.relnamespace = ns.oid AND cl.relname = table_name)
+				LEFT JOIN pg_catalog.pg_attribute attr ON (cl.oid = attr.attrelid AND column_name = attr.attname)
+				WHERE table_name = ? AND table_schema = ? AND table_catalog = ?
+				ORDER BY ordinal_position

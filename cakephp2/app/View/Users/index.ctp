@@ -6,13 +6,14 @@
 					<span class="login100-form-title p-b-55">
 						Login
 					</span>
-					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+					
 					<div class="wrap-input100 error-msg" id="login-msg" style="display:none;margin-top: -40px;">
 
 					</div>
 					<div class="wrap-input100 error-msg" id="email-msg" style="display:none">
 
 					</div>
+					
 					<div class="wrap-input100" style="margin-bottom:10px">
 						<input class="input100" type="text" name="email" placeholder="Email" id="email" value="<?php echo isset($emailSession) && !empty($emailSession) ? $emailSession : '';?>">
 						<span class="focus-input100"></span>
@@ -73,3 +74,4 @@
 													'controller' => 'users',
 													'action' => 'loginSuccess'
 												));?>" />
+												<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
