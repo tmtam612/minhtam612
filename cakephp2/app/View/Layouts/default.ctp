@@ -27,9 +27,23 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('cake.generic');
-
+		echo $this->Html->css('bootstrap.min');
+		// echo $this->Html->css('font-awesome.min');
+		echo $this->Html->css('icon-font.min');
+		echo $this->Html->css('animate');
+		echo $this->Html->css('hamburgers.min');
+		echo $this->Html->css('select2.min');
+		echo $this->Html->css('util');
+		echo $this->Html->css('main');
+		echo $this->Html->script('jquery-3.4.1.min');
+		echo $this->Html->script('jquery.min');
+		echo $this->Html->script('bootstrap.min');
+		
+		//echo $this->Html->css('cake.generic');
+		
+		echo $this->Html->script('popper');
+		echo $this->Html->script('select2.min');
+		echo $this->Html->script('main');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -37,27 +51,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body>
 	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'https://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
-
+		<!-- <div id="content"> -->
 			<?php echo $this->Flash->render(); ?>
-
 			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'https://cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-				);
-			?>
-			<p>
-				<?php echo $cakeVersion; ?>
-			</p>
-		</div>
+		<!-- </div> -->
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
