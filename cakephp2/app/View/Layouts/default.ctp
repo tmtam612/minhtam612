@@ -28,13 +28,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->css('font-awesome.min');
+		// echo $this->Html->css('font-awesome.min');
 		echo $this->Html->css('icon-font.min');
 		echo $this->Html->css('animate');
 		echo $this->Html->css('hamburgers.min');
-		echo $this->Html->css('select2.min');
+		// echo $this->Html->css('select2.min');
 		echo $this->Html->css('util');
 		echo $this->Html->css('main');
+		
 		echo $this->Html->script('jquery-3.4.1.min');
 		echo $this->Html->script('jquery.min');
 		echo $this->Html->script('bootstrap.min');

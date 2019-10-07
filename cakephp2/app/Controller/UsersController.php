@@ -8,23 +8,35 @@ class UsersController extends AppController {
 		$this->set(compact('emailSession','passSession'));
 	}
 	public function addUser() {
-		$this->layout = 'ajax';
+		$this->layout = false;
+		$this->render('add_user');
+	}
+	public function add() {
+		$this->layout = false;
+		$response = [];
 		if($this->request->is('post')) {
 			$data = $this->request->data;
-			if($this->User->validateUser($data)) {
+			$validateError = $this->User->validateAddUser($data);
+			if(count($validateError) == 0) {
 				$result = $this->User->addUser($data);
+				debug($result);exit;
+				if($result) {
+					$this->Session->write('User',$data);
+					$response['type'] = 'success';
+					$response['msg'] = "Thêm Thành Công";
+				} else {
+					$response['type'] = 'fail';
+					$response['msg'] = 'Thêm thất bại';
+				}
 			} else {
-				$result = false;
-			}
-			if( $result ) {
-				$this->Flash->success('The User has been save successfully');
-				return $this->redirect('addUser');
-			}
-			else {
-				$this->Flash->error('The User has not been save successfully');
+				$response['type'] = 'fail';
+				$response['msg'] = $validateError;
 			}
 		}
-		$this->render('add_user');
+		$this->render(false);
+		$this->response->body(json_encode($response));
+		$this->response->type('application/json');
+		return $this->response;
 	}
 	public function loginFB() {
 		$userData = array();
@@ -71,7 +83,7 @@ class UsersController extends AppController {
 			$data = $this->request->data;
 			if(isset($data['remember-me']) && $data['remember-me'] == 1) {
 				$this->Session->write('emailSession', $data['email']);
-				$this->Session->write('passSession', $data['pass']);
+				$this->Session->write('passSession', $data['password']);
 			}
 			$validateError = $this->User->validateUser($data);
 			if (count($validateError) == 0) {

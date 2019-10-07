@@ -58,8 +58,9 @@
 	}
 	function loginNormal() {
 		var data = $('#infoLogin').serialize();
+		var url = $('#linkLogin').attr('data-url');
 		$.ajax({
-			url: "http://localhost:8080/cakephp2/Users/loginNormal",
+			url: url,
 			data: data,
 			type: 'POST',
 			success: function(res) {
@@ -67,7 +68,7 @@
 				if(res.type == 'fail') {
 					if(typeof(res.msg) == 'string') {
 						$('#email').closest('div').addClass('error-div');
-						$('#pass').closest('div').addClass('error-div');
+						$('#password').closest('div').addClass('error-div');
 						$('#login-msg').show();
 						$('#login-msg').text(res.msg);
 					}
@@ -84,13 +85,13 @@
 	}
 	function resetDivError(){
 		$('#email').closest('div').removeClass('error-div');
-		$('#pass').closest('div').removeClass('error-div');
+		$('#password').closest('div').removeClass('error-div');
 		$('#login-msg').text('');
 		$('#login-msg').hide();
 		$('#email-msg').hide();
-		$('#pass-msg').hide();
+		$('#password-msg').hide();
 		$('#email-msg').text('');
-		$('#pass-msg').text('');
+		$('#password-msg').text('');
 	}
 	function changeStatusDiv(object, key, msg) {
 		$(object).removeClass('error-div');
@@ -101,11 +102,60 @@
 	}
 	function addUser(e) {
 		e.preventDefault();
-		$('#myModal').modal();
+		$('#myModal').empty();
+		var url = $('#linkCreateUser').attr('data-url');
 		$.get({
-			url: 'http://localhost:8080/cakephp2/Users/addUser',
+			url: url,
 			success: function(res) {
+				console.log(res);
+				$('#myModal').modal('show');
 				$('#myModal').append(res);
 			}
 		});
+	}
+	$(document).on("click","#btnOK", function(e) {
+		e.preventDefault();
+		var url = $('#linkCreate').attr('data-url');
+		var formData = $('#createUser').serialize();
+		$.ajax({
+			url: url,
+			type: "POST",
+			data: formData,
+			success: function(res) {
+				resetError();
+				if(res.type == 'fail') {
+					if(typeof(res.msg) == 'string') {
+						$('#create-email').closest('div').addClass('error-div');
+						$('#create-password').closest('div').addClass('error-div');
+						$('#create-name').closest('div').addClass('error-div');
+						$('#create-confirmPass').closest('div').addClass('error-div');
+						$('#create-msg').show();
+						$('#create-msg').text(res.msg);
+					}
+					for(var key in res.msg) {
+						var div = $('#create-'+key).closest('div');
+						changeStatusDiv(div,"create-"+ key, res.msg[key]);
+					}
+				} else {
+					$('#create-msg').show();
+					$('#create-msg').text(res.msg);
+				}
+			}
+		});
+	});
+	function resetError() {
+		$('#create-email').closest('div').removeClass('error-div');
+		$('#create-password').closest('div').removeClass('error-div');
+		$('#create-name').closest('div').removeClass('error-div');
+		$('#create-confirmPass').closest('div').removeClass('error-div');
+		$('#create-msg').text('');
+		$('#create-msg').hide();
+		$('#create-name-msg').hide();
+		$('#create-name-msg').text('');
+		$('#create-email-msg').hide();
+		$('#create-email-msg').text('');
+		$('#create-password-msg').hide();
+		$('#create-password-msg').text('');
+		$('#create-confirmPass-msg').hide();
+		$('#create-confirmPass-msg').text('');
 	}

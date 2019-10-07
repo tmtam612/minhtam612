@@ -21,11 +21,11 @@
 							<span class="lnr lnr-envelope"></span>
 						</span>
 					</div>
-					<div class="wrap-input100 error-msg" id="pass-msg" style="display:none">
+					<div class="wrap-input100 error-msg" id="password-msg" style="display:none">
 
 					</div>
 					<div class="wrap-input100">
-						<input class="input100" type="password" name="pass" placeholder="Password" id="pass" value="<?php echo isset($passSession) && !empty($passSession) ? $passSession : '';?>">
+						<input class="input100" type="password" name="password" placeholder="Password" id="password" value="<?php echo isset($passSession) && !empty($passSession) ? $passSession : '';?>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
@@ -70,6 +70,9 @@
 			</div>
 		</div>
 	</div>
+	<input type="hidden" id="linkCreate" data-url="<?php echo Router::url('add');?>" />
+	<input type="hidden" id="linkCreateUser" data-url="<?php echo Router::url('addUser');?>" />
+	<input type="hidden" id="linkLogin" data-url="<?php echo Router::url('loginNormal');?>" />
 	<input type="hidden" id="loginSuccess" data-url="<?php echo Router::url(array(
 													'controller' => 'users',
 													'action' => 'loginSuccess'
