@@ -78,3 +78,6 @@
 													'action' => 'loginSuccess'
 												));?>" />
 	<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+	<div id="dialog" title="Basic dialog">
+    	<p>Thêm Thành Công</p>
+	</div>

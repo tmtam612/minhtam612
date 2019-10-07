@@ -39,7 +39,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->script('jquery-3.4.1.min');
 		echo $this->Html->script('jquery.min');
 		echo $this->Html->script('bootstrap.min');
-		
+		echo $this->Html->script('jquery-ui');
 		//echo $this->Html->css('cake.generic');
 		
 		echo $this->Html->script('popper');

@@ -8,7 +8,7 @@
 			<span id="alert" role="alert"></span>
 		</div>
 		<div class="modal-body">
-			<div class="wrap-input100 error-msg" id="create-msg" style="display:none;margin-top: 30px;">
+			<div align="center" class="wrap-input100" id="create-msg" style="display:none;margin-top: 30px;color:green;font-weight:bold;font-size: 15px;">
 
 			</div>
 			<div class="wrap-input100 error-msg" id="create-name-msg" style="display:none">

@@ -9,13 +9,10 @@ class User extends Model {
 		return Hash::extract($user,'{n}.{s}');
 	}
 	public function addUser($data) {
-		$data['delete_flg'] = false;
-		$data['password'] = Security::hash($data['password'], 'blowfish');
+		$data['delete_flg'] = 0;
+		// $data['password'] = Security::hash($data['password'], 'blowfish');
 		$newData['Users'] = $data;
-		debug($newData);
-		$result =  $this->save($newData);
-		debug($result);
-		return $result;
+		return $this->save($newData);
 	}
 	public function checkExistUser($data) {
 		$sql = "email like '%"+$data['email']+"%'";
@@ -32,7 +29,8 @@ class User extends Model {
 			'conditions' => [
 				'delete_flg' => false,
 				'email' => $data['email'],
-				'password' => $this->matchPasswords($data['password']),
+				// 'password' => $this->matchPasswords($data['password']),
+				'password' => $data['password'],
 			],
 			'recursive' => -1
 		));

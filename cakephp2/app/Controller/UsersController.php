@@ -19,7 +19,6 @@ class UsersController extends AppController {
 			$validateError = $this->User->validateAddUser($data);
 			if(count($validateError) == 0) {
 				$result = $this->User->addUser($data);
-				debug($result);exit;
 				if($result) {
 					$this->Session->write('User',$data);
 					$response['type'] = 'success';
